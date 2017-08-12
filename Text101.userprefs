@@ -1,12 +1,14 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+﻿<Properties StartupConfiguration="{FA724657-9A93-D6CC-2BB7-1DB0BF63C9E9}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TextController.cs">
     <Files>
-      <File FileName="Assets/Scripts/TextController.cs" Line="7" Column="2" />
+      <File FileName="Assets/Scripts/TextController.cs" Line="7" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Text101 PreferredExecutionTarget="Unity.Editor" />
+  <MultiItemStartupConfigurations />
 </Properties>

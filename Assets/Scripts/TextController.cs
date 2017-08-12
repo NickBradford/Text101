@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.UI;
 
 public class TextController : MonoBehaviour {
-	
-	#region Variables
-	public Text text;
 
 	private enum States {
 		cell, //start point
@@ -30,38 +27,77 @@ public class TextController : MonoBehaviour {
 	};
 	
 	private States myState; //set the location of where you are in the maze
-	#endregion
-	
+
+    public Text text;
+
 	void Start () {
-		text.text = "Welcome!";
+		myState = States.cell;
 	}
 	
 	void Update () {
 		print (myState);
-		if (myState == States.cell) {cell();}
-		else if (myState == States.cellMirror) {cellMirror();}
-		else if (myState == States.closetDoor) {closetDoor();}
-		else if (myState == States.corridor1) {corridor1();}
-		else if (myState == States.corridor2) {corridor2();}
-		else if (myState == States.corridor3) {corridor3();}
-		else if (myState == States.courtyard) {courtyard();}
-		else if (myState == States.floor) {floor();}
-		else if (myState == States.freedom) {freedom();}
-		else if (myState == States.inCloset) {inCloset();}
-		else if (myState == States.lock0) {lock0();}
-		else if (myState == States.lock1) {lock1();}
-		else if (myState == States.mirror) {mirror();}
-		else if (myState == States.sheets0) {sheets0();}
-		else if (myState == States.sheets1) {sheets1();}
-		else if (myState == States.stairs0) {stairs0();}
-		else if (myState == States.stairs1) {stairs2();}
-		else if (myState == States.stairs2) {stairs1();}
-		else {text.text = "Insert witty comment here";}
-	}
+        switch (myState)
+        {
+            case States.cell:
+                Cell();
+                break;
+            case States.cellMirror:
+                CellMirror();
+                break;
+            case States.closetDoor:
+                ClosetDoor();
+                break;
+            case States.corridor1:
+                Corridor1();
+                break;
+            case States.corridor2:
+                Corridor2();
+                break;
+            case States.corridor3:
+                Corridor3();
+                break;
+            case States.courtyard:
+                Courtyard();
+                break;
+            case States.floor:
+                Floor();
+                break;
+            case States.freedom:
+                Freedom();
+                break;
+            case States.inCloset:
+                InCloset();
+                break;
+            case States.lock0:
+                Lock0();
+                break;
+            case States.lock1:
+                Lock1();
+                break;
+            case States.mirror:
+                Mirror();
+                break;
+            case States.sheets0:
+                Sheets0();
+                break;
+            case States.sheets1:
+                Sheets1();
+                break;
+            case States.stairs0:
+                Stairs0();
+                break;
+            case States.stairs1:
+                Stairs2();
+                break;
+            case States.stairs2:
+                Stairs1();
+                break;
+        }
+    }
 	
 	#region Prison Navigation
-	void cell() {
-		text.text = "Well, Stanley, this is it. You have spent ten years in this cell thinking about that cold November night. The night that changed your life. " +
+	void Cell() {
+        text.text = "Well, Stanley, this is it. You have spent ten years in this cell thinking about that cold November night. The night that changed your life. " +
 					"It is time to escape and make things right. Ten years is a long time for a crime you didn't commit, even more when it resulted in her death. " +
 					"Time to devise my plan, time to find him. As you look aroud the dark cell, you see the sheets on your bed, the mirror that you have watched " +
 					"your face age in these years, and the lock that prevents you from the freedom you so desire.\n\n" +
@@ -73,52 +109,80 @@ public class TextController : MonoBehaviour {
 		//else { errorChecking(); };
 	}
 	
-	void cellMirror() {
+	void CellMirror() {
+        text.text = "With the piece of mirror in hand, it is time to devise your next strategy. The thought, \"Where do I go from here?\", crosses your racing mind.\n\n" +
+                    "Press S to view Sheets, Press L to view the Lock.";
+        if (Input.GetKeyDown(KeyCode.S)) { myState = States.sheets1; }
+        else if (Input.GetKeyDown(KeyCode.L)) { myState = States.lock1; }
 	}
 	
-	void closetDoor() {
+	void ClosetDoor() {
 	}
 	
-	void corridor1() {
+	void Corridor1() {
 	}
 	
-	void corridor2() {
+	void Corridor2() {
 	}
 	
-	void corridor3() {
+	void Corridor3() {
 	}
 	
-	void courtyard() {
+	void Courtyard() {
+	}
+
+    void Floor() {
 	}
 	
-	void floor() {
+	void Freedom() {
+        text.text = "With the lock picked, it is time to open the door. You enter the dark corridor with much trepidation.\n\n" +
+            "Press C to open the door and get your freedom.";
+        if (Input.GetKeyDown(KeyCode.C)) { myState = States.corridor1; }
 	}
 	
-	void freedom() {
+	void InCloset() {
 	}
 	
-	void inCloset() {
+	void Lock0() {
+        text.text = "You walk over to the cell door. Cold steel, used to keep locked up what society deems undesireable. Beyond that is the dark hallway where nothing is stiring tonight. " +
+                    "You look at the lock and tell yourself, \"Stanley, think. There has to be a way to open this door!\" You stare with a blank stare while you try to generate any idea to get this door open. " +
+                    "But you realize, it is not here.\n\n" +
+                    "Press R to return to the the cell.";
+		if (Input.GetKeyDown(KeyCode.R)) { myState = States.cell; }
 	}
 	
-	void lock0() {
+	void Lock1() {
+        text.text = "You walk back over to the cell door, this time with the piece of glass in hand. When you arrive at the door, you realize that the piece of glass will fit in the lock. " +
+                    "You look to be sure there are no guards patrolling your hall and you then you take your hand through the bars. You fiddle with the glass in the keyhole and all of a sudden you hear it. \"Click.\" " +
+                    "You suddenly fill full of adrenline for the next step of your escape.\n\n" + 
+                    "Press the space bar to continue.";
+        if (Input.GetKeyDown(KeyCode.Space)) { myState = States.freedom; }
+    }
+	
+	void Mirror() {
+        text.text = "You walk over to that mear. As you stare at your aged face in the mirror, you notice a small shard has fallen out.\n\n" +
+            "Press T to take the shard or press R to return to the cell.";
+        if (Input.GetKeyDown(KeyCode.T)) { myState = States.cellMirror; }
+        else if (Input.GetKeyDown(KeyCode.R)) { myState = States.cell; }
 	}
 	
-	void lock1() {
+	void Sheets0() {
+        text.text = "You walk over and look at the sheets on your tiny prison bed. You can see the sweat stains that have accumluated over the years. So many restless dreams, but nothing that will help you to avenge her.\n\n" +
+                    "Press R to return to your cell";
+		if (Input.GetKeyDown(KeyCode.R)) { myState = States.cell; }
 	}
 	
-	void mirror() {
-	}
+	void Sheets1() {
+        text.text = "You walk back over to your bed. It is still the same old sheets. There isn't much you can do with these, so you decided to walk back to the cell.\n\n" +
+            "Press R to return to the cell.";
+        if (Input.GetKeyDown(KeyCode.R)) { myState = States.cellMirror; }
+    }
 	
-	void sheets0() {
-	}
+	void Stairs0() {}
 	
-	void sheets1() {}
+	void Stairs1() {}
 	
-	void stairs0() {}
-	
-	void stairs1() {}
-	
-	void stairs2() {}
+	void Stairs2() {}
 
 	#endregion
 	
