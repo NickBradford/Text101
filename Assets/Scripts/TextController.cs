@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.IO;
 
 public class TextController : MonoBehaviour
 {
@@ -119,8 +120,7 @@ public class TextController : MonoBehaviour
 		        if (Input.GetKeyDown(KeyCode.S)) { myState = States.sheets0; }
 		        else if (Input.GetKeyDown(KeyCode.M)) { myState = States.mirror; }
 		        else if (Input.GetKeyDown(KeyCode.L)) { myState = States.lock0; }
-		        //add in later
-		        //else { errorChecking(); };
+                //else if (!Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.M) && !Input.GetKeyDown(KeyCode.L) && Input.anyKeyDown) { errorChecking(); };
 		    }
 
 		    void CellMirror()
@@ -159,7 +159,7 @@ public class TextController : MonoBehaviour
 
 		    void Mirror()
 		    {
-		        text.text = "You walk over to that mear. As you stare at your aged face in the mirror, you notice a small shard has fallen out.\n\n" +
+		        text.text = "You walk over to that mirror. As you stare at your aged face in the mirror, you notice a small shard has fallen out.\n\n" +
 		            "Press T to take the shard or press R to return to the cell.";
 		        if (Input.GetKeyDown(KeyCode.T)) { myState = States.cellMirror; }
 		        else if (Input.GetKeyDown(KeyCode.R)) { myState = States.cell; }
@@ -216,8 +216,6 @@ public class TextController : MonoBehaviour
         #endregion
 
     #endregion
-
-    //add in a future update
 
     #region Error Checking 
     void errorChecking() {
